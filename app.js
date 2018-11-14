@@ -18,7 +18,7 @@ module.exports = app => {
       console.log('bootstrap running...')
 
       const cardData = await getCardData()
-      const newIssues = await createCards(context, cardData)
+      const newIssues = await createCards(context, cardData.reverse())
       updateCardRelationships(context, cardData, newIssues)
     }
   })
