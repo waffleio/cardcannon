@@ -1,34 +1,30 @@
 [
     {
         "id": 1,
-        "title": "Epic 1: 1st Epic 🥑🥑🥑",
-        "file": "apple.md",
-        "labels": ["sprint 1", "in progress"],
+        "title": "Epic 1: Learn How to Use Waffle 🏃🏃🏃",
+        "labels": ["waffle.io", "in progress"],
         "childOf": null,
         "dependsOn": null
     },
     {
         "id": 2,
-        "title": "🍐 1st child of Epic 1",
-        "file": "pear.md",
-        "labels": ["sprint 1", "to do"],
+        "title": "🤖 Install WaffleBot",
+        "labels": ["waffle.io", "to do"],
         "childOf": 1,
         "dependsOn": null
         
     },
     {
         "id": 3,
-        "title": "🥔 2nd child of Epic 1",
-        "file": "potato.md",
-        "labels": ["sprint 1", "to do"],
+        "title": "⚙ Configure Waffle board automation rules",
+        "labels": ["waffle.io", "to do"],
         "childOf": 1,
         "dependsOn": [2]
     },
     {
         "id": 4,
-        "title": "🍏 3rd child of Epic 1",
-        "file": "apple.md",
-        "labels": ["sprint 1", "to do"],
+        "title": "🚢 Move issue to in progress from branch",
+        "labels": ["waffle.io", "to do"],
         "childOf": 1,
         "dependsOn": [2, 3]
     }

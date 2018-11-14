@@ -108,7 +108,7 @@ async function getIssue(context, issueNumber) {
 }
 
 async function createIssue(context, cardData) {
-  const cardContentData = await helpers.readFilePromise('./content/cards/' + cardData.file)
+  const cardContentData = await helpers.readFilePromise('./content/cards/' + cardData.id + '.md')
   
   const newIssue = context.repo({
     title: cardData.title, 

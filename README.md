@@ -5,14 +5,14 @@ Useful for educators to easily create Waffle.io boards prepopulated with cards, 
 
 ## How It Works
 
-The GitHub App listens for `issue.opened` webhook events and creates new issues based on the (/cards/)[./cards/] config data in this project.
+The GitHub App listens for `issue.opened` webhook events and creates new issues based on the [/cards/...](./cards/) config directory of this project.
 
 ## Usage
 
 1. Ensure the Card Cannon app is running.  See [Installation](#Installation) below.
 2. Create a new GitHub repo if needed.
 3. Create a new Waffle.io project and board if needed.
-4. Install the GitHub App in the desired repo from https://github.com/settings/apps/<your-app-name>/installations.
+4. Install the GitHub App in the desired repo from https://github.com/settings/apps/your-app-name/installations.
 
 5. From your Waffle.io board, create a new issue titled `bootstrap my board`.
 
@@ -37,7 +37,7 @@ WEBHOOK_PROXY_URL=<your smee.io url>
 ```
 6. Run `npm install`.
 7. Run `nodemon` to start app.
-8. Install the GitHub App in the desired repo from https://github.com/settings/apps/<your-app-name>/installations.
+8. Install the GitHub App in the desired repo from https://github.com/settings/apps/your-app-name/installations.
 9. create a new issue titled `bootstrap my board`.
 
 ### Production
@@ -50,7 +50,7 @@ WEBHOOK_SECRET=<your app secret>
 PRIVATE_KEY_PATH=.data/private-key.pem
 NODE_ENV=production
 ```
-4. Install the GitHub App in the desired repo from https://github.com/settings/apps/<your-app-name>/installations.
+4. Install the GitHub App in the desired repo from https://github.com/settings/apps/your-app-name/installations.
 5. Create a new issue titled `bootstrap my board`.
 
 ## Resources
