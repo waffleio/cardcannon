@@ -76,7 +76,7 @@ async function updateCardRelationships(context, cardData, newIssues) {
 
       issue = await getIssue(context, newIssue.issueNumber)
 
-      const newBody = issue.data.body + 'child of #' + parentIssue.issueNumber
+      const newBody = issue.data.body + '\n\nchild of #' + parentIssue.issueNumber
 
       await editIssue(context, newIssue.issueNumber, newBody)
     }
@@ -89,7 +89,7 @@ async function updateCardRelationships(context, cardData, newIssues) {
 
         issue = await getIssue(context, newIssue.issueNumber)
 
-        const newBody = issue.data.body + 'depends on #' + dependencyIssue.issueNumber
+        const newBody = issue.data.body + '\n\ndepends on #' + dependencyIssue.issueNumber
 
         await editIssue(context, newIssue.issueNumber, newBody)
       }
