@@ -43,24 +43,24 @@ async function updateCardRelationships(context, cardData, newIssues) {
   
   for (const card of cardData) {
 
-
-    console.log('break 1')
-    console.log('id: ' + card.id + ' is child of: ' + card.childOf)
-    const newIssue = newIssues.find(issue => issue.id === card.id);
-    console.log('id: ' + card.id + ' is: ' + newIssue.issueNumber)
+    //console.log('id: ' + card.id + ' is child of id: ' + card.childOf)
+    const newIssue = newIssues.find(issue => issue.id === card.id)
+    //console.log('id: ' + card.id + ' is: ' + newIssue.issueNumber)
 
     if(card.childOf) {
+
+      const parentIssue = newIssues.find(issue => issue.id === card.childOf)
+      //console.log('parent id: ' + card.childOf + ' is: ' + parentIssue.issueNumber)
+
       issue = await getIssue(context, newIssue.issueNumber)
-      console.log(issue.data.body)
+
+      const newBody = issue.data.body + 'child of #' + parentIssue.issueNumber
+      
+      console.log(newBody)
+
+      await editIssue(context, newIssue.issueNumber, newBody)
     }
-
-    
-
-    //const response = await editIssue(context, newIssue.issueNumber, newBody) 
-
   }
-
-  //return newIssues
 }
 
 async function getIssue(context, issueNumber) {
@@ -86,10 +86,11 @@ async function createIssue(context, cardData) {
 }
 
 async function editIssue(context, issueNumber, body) {
-  
+
   const newIssue = context.repo({
+    number: issueNumber,
     body: body
   })
-  const response = await context.github.issues.create(newIssue)
+  const response = await context.github.issues.edit(newIssue)
   return response
 }
