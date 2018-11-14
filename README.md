@@ -1,4 +1,4 @@
-# 🗂 Wafffle.io Card Cannon
+# 🗂 Waffle.io Card Cannon
 A GitHub App for bootstrapping a Waffle.io board with issues.
 
 Useful for educators to easily create Waffle.io boards prepopulated with cards, labels, epics, and dependencies for curriculum.
