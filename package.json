@@ -1,6 +1,6 @@
 {
   "name": "CardCannon",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A GitHub App for bootstrapping a GitHub repo with issues.",
   "author": "Adam Zolyak <adam@waffle.io> (www.waffle.io)",
   "license": "ISC",
