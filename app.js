@@ -17,6 +17,14 @@ module.exports = app => {
 
       console.log('bootstrap running...')
 
+      //move bootstrap issue into progress
+      const updateIssue = context.repo({
+        number: context.payload.issue.number,
+        title: '🗂 bootstrap my board 🏃🏃🏃',
+        labels: ['in progress']
+      })
+      context.github.issues.edit(updateIssue)
+
       //get card data from config
       const cardData = await getCardData()
 
