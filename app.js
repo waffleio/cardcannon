@@ -1,5 +1,7 @@
 const helpers = require('./helpers.js')
 
+console.log('app.js running...')
+
 module.exports = app => {
 
   app.on('issues.opened', async context => {
@@ -12,6 +14,8 @@ module.exports = app => {
     var newIssues = []
 
   	if (triggerRegEx) {
+
+      console.log('bootstrap running...')
 
       const cardData = await getCardData()
       const newIssues = await createCards(context, cardData)

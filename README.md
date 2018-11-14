@@ -1,5 +1,7 @@
 # cardcannon
-A GitHub App for bootstrapping a GitHub repo with issues.
+A GitHub App for bootstrapping a Waffle.io board with issues.
+
+Useful for educators to easily create Waffle.io boards prepopulated with cards, labels, epics, and dependencies for curriculum.
 
 ## How It Works
 
