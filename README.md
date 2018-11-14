@@ -1,4 +1,4 @@
-# Wafffle.io Card Cannon
+# 🗂 Wafffle.io Card Cannon
 A GitHub App for bootstrapping a Waffle.io board with issues.
 
 Useful for educators to easily create Waffle.io boards prepopulated with cards, labels, epics, and dependencies for curriculum.
@@ -13,6 +13,7 @@ The GitHub App listens for `issue.opened` webhook events and creates new issues 
 2. Create a new GitHub repo if needed.
 3. Create a new Waffle.io project and board if needed.
 4. Install the GitHub App in the desired repo from https://github.com/settings/apps/<your-app-name>/installations.
+
 5. From your Waffle.io board, create a new issue titled `bootstrap my board`.
 
 ## Examples
