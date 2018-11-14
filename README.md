@@ -9,7 +9,7 @@ The GitHub App listens for `issue.opened` webhook events and creates new issues 
 
 ## Usage
 
-1. Ensure the Card Cannon app is running.  See Installation.
+1. Ensure the Card Cannon app is running.  See [Installation](#Installation) below.
 2. Create a new GitHub repo if needed.
 3. Create a new Waffle.io project and board if needed.
 4. Install the GitHub App in the desired repo from https://github.com/settings/apps/<your-app-name>/installations.
