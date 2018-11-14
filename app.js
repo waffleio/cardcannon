@@ -17,9 +17,21 @@ module.exports = app => {
 
       console.log('bootstrap running...')
 
+      //get card data from config
       const cardData = await getCardData()
+
+      //create cards in reverse order for proper order on waffle.io board
       const newIssues = await createCards(context, cardData.reverse())
-      updateCardRelationships(context, cardData, newIssues)
+
+      //update cards with epic and dependency relationships
+      await updateCardRelationships(context, cardData, newIssues)
+
+      //close bootstrap issue
+      const closeIssue = context.repo({
+        number: context.payload.issue.number,
+        state: 'closed'
+      })
+      context.github.issues.edit(closeIssue)
     }
   })
 }

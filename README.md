@@ -53,6 +53,12 @@ NODE_ENV=production
 4. Install the GitHub App in the desired repo from https://github.com/settings/apps/<your-app-name>/installations.
 5. Create a new issue titled `bootstrap my board`.
 
+## Resources
+
+https://github.com/octokit/rest.js
+https://probot.github.io/docs/
+http://help-center.glitch.me/help/ 
+
 ## Contributing
 
 If you have suggestions for how this project could be improved, or want to report a bug, open an issue!  Or pull request! We'd love all and any contributions.
