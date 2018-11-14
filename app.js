@@ -17,8 +17,6 @@ module.exports = app => {
       const newIssues = await createCards(context, cardData)
       updateCardRelationships(context, cardData, newIssues)
     }
-    
-    
   })
 }
 
@@ -63,12 +61,7 @@ async function updateCardRelationships(context, cardData, newIssues) {
 
       for (const dependencyId of card.dependsOn) {
 
-        console.log('break 1')
-
-        console.log(dependencyId)
-
         const dependencyIssue = newIssues.find(issue => issue.id === dependencyId)
-        console.log('parent id: ' + card.dependsOn + ' is: ' + dependencyIssue.issueNumber)
 
         issue = await getIssue(context, newIssue.issueNumber)
 

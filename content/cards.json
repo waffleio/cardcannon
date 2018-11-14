@@ -1,35 +1,35 @@
 [
     {
         "id": 1,
-        "title": "Team Formation",
+        "title": "Epic 1: 1st Epic",
         "file": "apple.md",
-        "labels": ["sprint 1", "to do"],
+        "labels": ["sprint 1", "in progress"],
         "childOf": null,
         "dependsOn": null
     },
     {
         "id": 2,
-        "title": "Company Formation",
+        "title": "1st child of Epic 1",
         "file": "pear.md",
         "labels": ["sprint 1", "to do"],
         "childOf": 1,
-        "dependsOn": [3, 4]
+        "dependsOn": null
         
     },
     {
         "id": 3,
-        "title": "Read Judging criteria",
+        "title": "2nd child of Epic 1",
         "file": "potato.md",
         "labels": ["sprint 1", "to do"],
         "childOf": 1,
-        "dependsOn": null
+        "dependsOn": [2]
     },
     {
         "id": 4,
-        "title": "Read Judging criteria",
+        "title": "3rd child of Epic 1",
         "file": "potato.md",
         "labels": ["sprint 1", "to do"],
         "childOf": 1,
-        "dependsOn": null
+        "dependsOn": [2, 3]
     }
 ]
