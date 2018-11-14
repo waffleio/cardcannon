@@ -1,5 +1,5 @@
-### Test your Guesses
+### Apple
  
-By now you should have:
-- Boxes 1-4 filled out on your lean canvas
-- A paper prototype of a solution
+Checklist of things to do:
+- [ ] to do
+- [ ] another to do
