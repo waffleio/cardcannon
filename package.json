@@ -1,0 +1,47 @@
+{
+  "name": "CardCannon",
+  "version": "0.0.1",
+  "description": "A GitHub App for bootstrapping a GitHub repo with issues.",
+  "author": "Adam Zolyak <adam@waffle.io> (www.waffle.io)",
+  "license": "ISC",
+  "repository": "https://github.com/waffleio/cardcannon.git",
+  "homepage": "https://github.com/waffleio/cardcannon",
+  "bugs": "https://github.com/waffleio/cardcannon/issues",
+  "keywords": [
+    "probot",
+    "github",
+    "probot-app"
+  ],
+  "scripts": {
+    "dev": "nodemon",
+    "start": "probot run ./app.js",
+    "lint": "standard --fix",
+    "test": "jest --watchAll",
+    "test:watch": "jest --watch --notify --notifyMode=change --coverage"
+  },
+  "dependencies": {
+    "probot": "^7.0.0",
+    "probot-scheduler": "^1.2.0"
+  },
+  "devDependencies": {
+    "jest": ">23.0.0",
+    "nodemon": "^1.17.2",
+    "smee-client": "^1.0.2",
+    "standard": "^10.0.3"
+  },
+  "engines": {
+    "node": ">= 8.3.0"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  },
+  "nodemonConfig": {
+    "exec": "npm start",
+    "watch": [
+      ".env",
+      "."
+    ]
+  }
+}
