@@ -3,18 +3,15 @@ const helpers = require('./helpers.js')
 console.log('app.js running...')
 
 module.exports = app => {
-
   app.on('issues.opened', async context => {
-
     const issueTitle = context.payload.issue.title
 
-    const triggerPattern = /bootstrap my board/gi;
-    const triggerRegEx = triggerPattern.test(issueTitle);
+    const triggerPattern = /bootstrap my board/gi
+    const triggerRegEx = triggerPattern.test(issueTitle)
 
     var newIssues = []
 
-  	if (triggerRegEx) {
-
+    if (triggerRegEx) {
       console.log('bootstrap running...')
 
       //move bootstrap issue into progress
@@ -23,7 +20,7 @@ module.exports = app => {
         title: '🗂 bootstrap my board 🏃🏃🏃',
         labels: ['in progress']
       })
-      context.github.issues.edit(updateIssue)
+      context.github.issues.update(updateIssue)
 
       //get card data from config
       const cardData = await getCardData()
@@ -39,7 +36,7 @@ module.exports = app => {
         number: context.payload.issue.number,
         state: 'closed'
       })
-      context.github.issues.edit(closeIssue)
+      context.github.issues.update(closeIssue)
     }
   })
 }
@@ -52,44 +49,43 @@ async function getCardData() {
 
 async function createCards(context, cardData) {
   let newIssues = []
-  
+
   for (const card of cardData) {
-    const response = await (createIssue(context, card))
-    newIssues.push({id: card.id, issueNumber: response.data.number})
+    const response = await createIssue(context, card)
+    newIssues.push({ id: card.id, issueNumber: response.data.number })
   }
 
   return newIssues
 }
 
 async function updateCardRelationships(context, cardData, newIssues) {
-  
   for (const card of cardData) {
-
     //console.log('id: ' + card.id + ' is child of id: ' + card.childOf)
     const newIssue = newIssues.find(issue => issue.id === card.id)
     //console.log('id: ' + card.id + ' is: ' + newIssue.issueNumber)
 
-    if(card.childOf) {
-
+    if (card.childOf) {
       const parentIssue = newIssues.find(issue => issue.id === card.childOf)
       //console.log('parent id: ' + card.childOf + ' is: ' + parentIssue.issueNumber)
 
       issue = await getIssue(context, newIssue.issueNumber)
 
-      const newBody = issue.data.body + '\n\nchild of #' + parentIssue.issueNumber
+      const newBody =
+        issue.data.body + '\n\nchild of #' + parentIssue.issueNumber
 
       await editIssue(context, newIssue.issueNumber, newBody)
     }
 
-    if(card.dependsOn) {
-
+    if (card.dependsOn) {
       for (const dependencyId of card.dependsOn) {
-
-        const dependencyIssue = newIssues.find(issue => issue.id === dependencyId)
+        const dependencyIssue = newIssues.find(
+          issue => issue.id === dependencyId
+        )
 
         issue = await getIssue(context, newIssue.issueNumber)
 
-        const newBody = issue.data.body + '\n\ndepends on #' + dependencyIssue.issueNumber
+        const newBody =
+          issue.data.body + '\n\ndepends on #' + dependencyIssue.issueNumber
 
         await editIssue(context, newIssue.issueNumber, newBody)
       }
@@ -98,7 +94,6 @@ async function updateCardRelationships(context, cardData, newIssues) {
 }
 
 async function getIssue(context, issueNumber) {
-  
   const issue = context.repo({
     number: issueNumber
   })
@@ -108,10 +103,12 @@ async function getIssue(context, issueNumber) {
 }
 
 async function createIssue(context, cardData) {
-  const cardContentData = await helpers.readFilePromise('./content/cards/' + cardData.id + '.md')
-  
+  const cardContentData = await helpers.readFilePromise(
+    './content/cards/' + cardData.id + '.md'
+  )
+
   const newIssue = context.repo({
-    title: cardData.title, 
+    title: cardData.title,
     labels: cardData.labels,
     body: cardContentData
   })
@@ -120,11 +117,10 @@ async function createIssue(context, cardData) {
 }
 
 async function editIssue(context, issueNumber, body) {
-
   const newIssue = context.repo({
     number: issueNumber,
     body: body
   })
-  const response = await context.github.issues.edit(newIssue)
+  const response = await context.github.issues.update(newIssue)
   return response
 }
