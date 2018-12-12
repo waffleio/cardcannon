@@ -64,31 +64,25 @@ async function updateCardRelationships(context, cardData, newIssues) {
     const newIssue = newIssues.find(issue => issue.id === card.id)
     //console.log('id: ' + card.id + ' is: ' + newIssue.issueNumber)
 
-    if (card.childOf) {
-      const parentIssue = newIssues.find(issue => issue.id === card.childOf)
-      //console.log('parent id: ' + card.childOf + ' is: ' + parentIssue.issueNumber)
-
+    if (card.childOf || card.dependsOn) {
       issue = await getIssue(context, newIssue.issueNumber)
-
-      const newBody =
-        issue.data.body + '\n\nchild of #' + parentIssue.issueNumber
-
-      await editIssue(context, newIssue.issueNumber, newBody)
-    }
-
-    if (card.dependsOn) {
-      for (const dependencyId of card.dependsOn) {
-        const dependencyIssue = newIssues.find(
-          issue => issue.id === dependencyId
-        )
-
-        issue = await getIssue(context, newIssue.issueNumber)
-
-        const newBody =
-          issue.data.body + '\n\ndepends on #' + dependencyIssue.issueNumber
-
-        await editIssue(context, newIssue.issueNumber, newBody)
+      newBody = issue.data.body + '\n'
+      
+      if (card.childOf) {
+        const parentIssue = newIssues.find(issue => issue.id === card.childOf)
+        //console.log('parent id: ' + card.childOf + ' is: ' + parentIssue.issueNumber)
+        newBody = newBody + '\nchild of #' + parentIssue.issueNumber
       }
+
+      if (card.dependsOn) {
+        for (const dependencyId of card.dependsOn) {
+          const dependencyIssue = newIssues.find(
+            issue => issue.id === dependencyId
+          )
+          newBody = newBody + '\ndepends on #' + dependencyIssue.issueNumber
+        }
+      }
+      await editIssue(context, newIssue.issueNumber, newBody)
     }
   }
 }
